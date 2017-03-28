@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-COMPATIBLE" content="text/html" >
+    <meta name="viewport" content="width=device-width,
+                                    initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="vote and submit site">
+    <meta name="author" content="Kalnynsh">
+    <link rel="icon" href="{% 'images/favicon-16x16.png' %}">
+    <title>Discuss - Share and Disucss your favourite web pages</title>
+</head>
+<body>
+<nav>
+    <ul>
+        <li><a href="#">Home</a></li>
+        {% if request.user.is_authenticated %}
+            <li><a href="#">Submit New link</a></li>
+            <li><a href="logout">Logout</a></li>
+        {% else %}
+            <li><a href="login">Login</a></li>
+            <li><a href="user-registration">Creat New Account</a></li>
+        {% endif %}
+    </ul>
+</nav>
+
+    {% block content %}
+    {% endblock content %}
+</body>
+</html>
