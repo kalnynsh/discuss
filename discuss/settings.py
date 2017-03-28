@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    # 'captcha',
+    'captcha',
     'accounts',
     'links',
 ]
@@ -146,4 +146,4 @@ LOGIN_URL = '/login/'
 
 RECAPTCHA_PUBLIC_KEY = '6LcdhRITAAAAAJNm859er3fklqPGC9HNHZx29ZiG'
 RECAPTCHA_PRIVATE_KEY = '6LcdhRITAAAAACB62KUF13EVWrmgqYnbf5DZ4UQ0'
-NOCAPTCHA= True
+NOCAPTCHA = True
