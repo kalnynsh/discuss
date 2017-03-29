@@ -9,24 +9,26 @@
     <meta name="description" content="vote and submit site">
     <meta name="author" content="Kalnynsh">
     <link rel="icon" href="{% 'images/favicon-16x16.png' %}">
-    <link rel="stylesheet" href="{% 'css/style.css' %}">
+    <link rel="stylesheet" href="{% 'css/base.css' %}">
     <title>Discuss - Share and Discuss your favourite web pages</title>
 </head>
 <body>
-<nav>
-    <ul>
-        <li><a href="#">Home</a></li>
-        {% if request.user.is_authenticated %}
-            <li><a href="#">Submit New link</a></li>
-            <li><a href="logout">Logout</a></li>
-        {% else %}
-            <li><a href="login">Login</a></li>
-            <li><a href="user-registration">Create New Account</a></li>
-        {% endif %}
-    </ul>
-</nav>
+<div class="container">
+    <nav>
+        <ul>
+            <li><a href="#">Home</a></li>
+            {% if request.user.is_authenticated %}
+                <li><a href="#">Submit New link</a></li>
+                <li><a href="logout">Logout</a></li>
+            {% else %}
+                <li><a href="login">Login</a></li>
+                <li><a href="user-registration">Create New Account</a></li>
+            {% endif %}
+        </ul>
+    </nav>
 
-    {% block content %}
-    {% endblock content %}
+        {% block content %}
+        {% endblock content %}
+</div>
 </body>
 </html>
