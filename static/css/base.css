@@ -1,11 +1,15 @@
 /* css for base.html */
 body {
+    width: 100%;
     margin: 0;
     padding: 0;
+    background-color: #ccffff;
 }
 
 .container {
-    width: 1500px;
+    width: 1200px;
+    height: 100%;
     margin: 0 auto;
-    background-color: #F8F8F8;
+    padding: 10px 70px;
+    background-color: #b3ffff;
 }
