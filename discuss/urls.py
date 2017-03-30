@@ -23,6 +23,7 @@ from accounts.views import UserRegistrationView
 from links.views import HomeView
 from links.views import NewSubmissionView
 from links.views import SubmissionDetailView
+from links.views import NewCommentView
 
 
 urlpatterns = [
@@ -35,5 +36,6 @@ urlpatterns = [
     url(r'^register/$', UserRegistrationView.as_view(), name='user-registration'),
     url(r'^new-submission/$', NewSubmissionView.as_view(), name='new-submission'),
     url(r'^submission/(?P<pk>\d+)/$', SubmissionDetailView.as_view(), name='submission-detail'),
+    url(r'^new-comment/$', NewCommentView.as_view(), name='new-comment'),
 
 ]
