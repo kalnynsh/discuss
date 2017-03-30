@@ -22,6 +22,7 @@ from django.views.generic import TemplateView
 from accounts.views import UserRegistrationView
 from links.views import HomeView
 from links.views import NewSubmissionView
+from links.views import SubmissionDetailView
 
 
 urlpatterns = [
@@ -33,5 +34,6 @@ urlpatterns = [
     url(r'^logout/$', logout, kwargs={'next_page': '/login/'}, name='logout'),
     url(r'^register/$', UserRegistrationView.as_view(), name='user-registration'),
     url(r'^new-submission/$', NewSubmissionView.as_view(), name='new-submission'),
+    url(r'^submission/(?P<pk>\d+)/$', SubmissionDetailView.as_view(), name='submission-detail'),
 
 ]
