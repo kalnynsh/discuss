@@ -34,12 +34,22 @@ class NewSubmissionView(CreateView):
         return HttpResponseRedirect(self.get_success_url())
 
     def get_success_url(self):
-        return reverse('submission_detail.html', kwargs={'pk': self.object.pk})
+        return reverse('submission-detail', kwargs={'pk': self.object.pk})
 
 
 class SubmissionDetailView(DetailView):
     model = Link
     template_name = 'submission_detail.html'
+
+    def get_context_data(self, **kwargs):
+        ctx = super(SubmissionDetailView, self).get_context_data(**kwargs)
+
+        submission_comments = Comment.objects.filter(commented_on=self.object)
+        ctx['comments'] = submission_comments
+
+        ctx['comment_from'] = CommentModelForm(initial={'link_pk': self.object.pk})
+
+        return ctx
 
 
 class HomeView(TemplateView):
