@@ -34,7 +34,7 @@ class NewSubmissionView(CreateView):
         return HttpResponseRedirect(self.get_success_url())
 
     def get_success_url(self):
-        return reverse('home')
+        return reverse('submission_detail.html', kwargs={'pk': self.object.pk})
 
 
 class SubmissionDetailView(DetailView):
