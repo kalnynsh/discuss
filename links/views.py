@@ -23,7 +23,7 @@ class NewSubmissionView(CreateView):
 
     @method_decorator(login_required)
     def dispatch(self, request, *args, **kwargs):
-        return super(NewSubmissionView, self).dispatch(*args, **kwargs)
+        return super(NewSubmissionView, self).dispatch(request, *args, **kwargs)
 
     def form_valid(self, form):
         new_link = form.save(commit=False)
@@ -35,6 +35,11 @@ class NewSubmissionView(CreateView):
 
     def get_success_url(self):
         return reverse('home')
+
+
+class SubmissionDetailView(DetailView):
+    model = Link
+    template_name = 'submission_detail.html'
 
 
 class HomeView(TemplateView):
