@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block content %}
+    <h1><a href="{{ object.url }}" target="_blank">{{ object.title }}</a></h1>
+    <p>submitted by: <b>{{ object.submitted_by.username }}</b></p>
+    <p>submitted on: <b>{{ object.submitted_on }}</b></p>
+{% endblock %}
