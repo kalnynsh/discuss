@@ -10,23 +10,21 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.10/ref/settings/
 """
 
-import os
+# import os
+# Load local settings if available
+try:
+    from .local_settings import *
+except ImportError:
+    from .deployment_settings import *
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+# BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+# BASE_DIR import from local_settings
 
+# SECRET_KEY import from local_settings
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.10/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'c1!e8he%5ir^0p&y+uj$dxvyz00c9$$mr_421%&0wt*q61du88'
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-ALLOWED_HOSTS = []
-
 
 # Application definition
 
@@ -87,20 +85,21 @@ WSGI_APPLICATION = 'discuss.wsgi.application'
 #     }
 # }
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'OPTIONS': {
-            'read_default_file': os.path.join(BASE_DIR, os.path.join(os.path.dirname(os.path.abspath(__file__)),
-                                                                     'my_db.cnf')),
-        },
-        'TEST': {
-            'NAME': 'test_db',
-            'USER': 'test_user',
-            'PASSWORD': 'kZnW5burbBYEEYAl',
-        },
-    }
-}
+# DATABASES import from local_settings
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'OPTIONS': {
+#             'read_default_file': os.path.join(BASE_DIR, os.path.join(os.path.dirname(os.path.abspath(__file__)),
+#                                                                      'my_db.cnf')),
+#         },
+#         'TEST': {
+#             'NAME': 'test_db',
+#             'USER': 'test_user',
+#             'PASSWORD': 'kZnW5burbBYEEYAl',
+#         },
+#     }
+# }
 
 
 # Password validation

@@ -19,7 +19,7 @@ class NewSubmissionView(CreateView):
         'title', 'url',
     )
 
-    template_name = 'new_submission.html'
+    template_name = 'links/new_submission.html'
 
     @method_decorator(login_required)
     def dispatch(self, request, *args, **kwargs):
@@ -39,7 +39,7 @@ class NewSubmissionView(CreateView):
 
 class SubmissionDetailView(DetailView):
     model = Link
-    template_name = 'submission_detail.html'
+    template_name = 'links/submission_detail.html'
 
     def get_context_data(self, **kwargs):
         ctx = super(SubmissionDetailView, self).get_context_data(**kwargs)
@@ -55,11 +55,11 @@ class SubmissionDetailView(DetailView):
 class NewCommentView(CreateView):
     form_class = CommentModelForm
     http_method_names = ('post', )
-    template_name = 'comment.html'
+    template_name = 'links/comment.html'
 
     @method_decorator(login_required)
     def dispatch(self, request, *args, **kwargs):
-        return super(NewCommentView, self).dispatch(*args, **kwargs)
+        return super(NewCommentView, self).dispatch(request, *args, **kwargs)
 
     def form_valid(self, form):
         parent_link = Link.objects.get(pk=form.cleaned_data['link_pk'])

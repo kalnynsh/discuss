@@ -1,4 +1,4 @@
-{% extends "base.html" $}
+{% extends "base.html" %}
 {% load staticfiles %}
 
 {% block content %}
@@ -10,7 +10,8 @@
         </a>
     </p>
 
-    <form action="" method="post">{% csrf_token %}
+    <form action="" method="post">
+        {% csrf_token %}
         {{ form.as_p }}
         <input type="submit" value="Post Comment">
     </form>
