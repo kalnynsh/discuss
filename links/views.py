@@ -83,5 +83,44 @@ class NewCommentView(CreateView):
         return ctx
 
 
+class NewCommentReplayView(CreateView):
+    form_class = CommentModelForm
+    template_name = 'links/comment_replay.html'
+    
+    @method_decorator(login_required)
+    def dispatch(self, request, *args, **kwargs):
+        return super(NewCommentReplayView, self).dispatch(request, *args, **kwargs)
+    
+    def get_context_data(self, **kwargs):
+        ctx = super(NewCommentReplayView, self).get_context_data(**kwargs)
+        ctx['parent_comment_pk'] = Comment.objects.get(
+                                                  pk=self.request.GET['parent_comment_pk'])
+        return ctx
+
+    def get_initial(self):
+        initial_data = super(NewCommentReplayView, self).get_initial()
+
+        link_pk = self.request.GET['link_pk']
+        initial_data['link_pk'] = link_pk
+
+        parent_comment_pk = self.request.GET['parent_comment_pk']
+        initial_data['parent_comment_pk'] = parent_comment_pk
+
+        return initial_data
+
+    def form_valid(self, form):
+        parent_link = Link.objects.get(pk=form.cleaned_data['link_pk'])
+        parent_comment = Comment.objects.get(pk=form.cleaned_data['parent_comment_pk'])
+
+        new_comment = form.save(commit=False)
+        new_comment.commented_on = parent_link
+        new_comment.in_replay_to = parent_comment
+        new_comment.commented_by = self.request.user
+
+        new_comment.save()
+
+        return HttpResponseRedirect(reverse('submission-detail', kwargs={'pk': parent_link.pk}))
+    
+
 class HomeView(TemplateView):
     template_name = 'home.html'

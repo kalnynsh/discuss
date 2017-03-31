@@ -31,7 +31,7 @@ urlpatterns = [
 
     url(r'^$', HomeView.as_view(), name='home'),
 
-    url(r'^login/$', login, kwargs={'template_name': 'login.html'}, name='login'),
+    url(r'^login/$', login, kwargs={'template_name': 'accounts/login.html'}, name='login'),
     url(r'^logout/$', logout, kwargs={'next_page': '/login/'}, name='logout'),
     url(r'^register/$', UserRegistrationView.as_view(), name='user-registration'),
     url(r'^new-submission/$', NewSubmissionView.as_view(), name='new-submission'),
