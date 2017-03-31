@@ -24,6 +24,7 @@ from links.views import HomeView
 from links.views import NewSubmissionView
 from links.views import SubmissionDetailView
 from links.views import NewCommentView
+from links.views import NewCommentReplyView
 
 
 urlpatterns = [
@@ -37,5 +38,6 @@ urlpatterns = [
     url(r'^new-submission/$', NewSubmissionView.as_view(), name='new-submission'),
     url(r'^submission/(?P<pk>\d+)/$', SubmissionDetailView.as_view(), name='submission-detail'),
     url(r'^new-comment/$', NewCommentView.as_view(), name='new-comment'),
+    url(r'^new-comment-reply/$', NewCommentReplyView.as_view(), name='new-comment-reply'),
 
 ]

@@ -83,22 +83,22 @@ class NewCommentView(CreateView):
         return ctx
 
 
-class NewCommentReplayView(CreateView):
+class NewCommentReplyView(CreateView):
     form_class = CommentModelForm
     template_name = 'links/comment_replay.html'
     
     @method_decorator(login_required)
     def dispatch(self, request, *args, **kwargs):
-        return super(NewCommentReplayView, self).dispatch(request, *args, **kwargs)
+        return super(NewCommentReplyView, self).dispatch(request, *args, **kwargs)
     
     def get_context_data(self, **kwargs):
-        ctx = super(NewCommentReplayView, self).get_context_data(**kwargs)
+        ctx = super(NewCommentReplyView, self).get_context_data(**kwargs)
         ctx['parent_comment_pk'] = Comment.objects.get(
                                                   pk=self.request.GET['parent_comment_pk'])
         return ctx
 
     def get_initial(self):
-        initial_data = super(NewCommentReplayView, self).get_initial()
+        initial_data = super(NewCommentReplyView, self).get_initial()
 
         link_pk = self.request.GET['link_pk']
         initial_data['link_pk'] = link_pk
