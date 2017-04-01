@@ -71,7 +71,7 @@ class NewCommentView(CreateView):
 
         new_comment.save()
 
-        return HttpResponseRedirect(reverse('submission-detail', kwargs={'pk': parent_link}))
+        return HttpResponseRedirect(reverse('submission-detail', kwargs={'pk': parent_link.pk}))
 
     def get_initial(self):
         initial_data = super(NewCommentView, self).get_initial()
