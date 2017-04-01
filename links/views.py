@@ -44,7 +44,8 @@ class SubmissionDetailView(DetailView):
     def get_context_data(self, **kwargs):
         ctx = super(SubmissionDetailView, self).get_context_data(**kwargs)
 
-        submission_comments = Comment.objects.filter(commented_on=self.object)
+        submission_comments = Comment.objects.filter(commented_on=self.object,
+                                                     in_reply_to__isnull=True)
         ctx['comments'] = submission_comments
 
         ctx['comment_from'] = CommentModelForm(initial={'link_pk': self.object.pk})
