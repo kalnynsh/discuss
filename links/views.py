@@ -48,7 +48,7 @@ class SubmissionDetailView(DetailView):
                                                      in_reply_to__isnull=True)
         ctx['comments'] = submission_comments
 
-        ctx['comment_from'] = CommentModelForm(initial={'link_pk': self.object.pk})
+        ctx['comment_form'] = CommentModelForm(initial={'link_pk': self.object.pk})
 
         return ctx
 
