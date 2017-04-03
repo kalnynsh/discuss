@@ -125,3 +125,9 @@ class NewCommentReplyView(CreateView):
 
 class HomeView(TemplateView):
     template_name = 'home.html'
+
+    def get_context_data(self, **kwargs):
+        ctx = super(HomeView, self).get_context_data(**kwargs)
+        ctx['submission'] = Link.objects.all()
+
+        return ctx
