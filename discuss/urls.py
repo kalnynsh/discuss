@@ -26,6 +26,7 @@ from links.views import SubmissionDetailView
 from links.views import NewCommentView
 from links.views import NewCommentReplyView
 from links.views import UpvoteSubmissionView
+from links.views import RemoveUpvoteFromSubmissionView
 
 
 urlpatterns = [
@@ -42,4 +43,6 @@ urlpatterns = [
     url(r'^new-comment/$', NewCommentView.as_view(), name='new-comment'),
     url(r'^new-comment-reply/$', NewCommentReplyView.as_view(), name='new-comment-reply'),
     url(r'^upvote/(?P<link_pk>\d+)/$', UpvoteSubmissionView.as_view(), name='upvote-submission'),
+    url(r'^upvote/(?P<link_pk>\d+)/remove/$', RemoveUpvoteFromSubmissionView.as_view(),
+        name='remove-upvote'),
 ]
