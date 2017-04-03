@@ -128,7 +128,20 @@ class HomeView(TemplateView):
 
     def get_context_data(self, **kwargs):
         ctx = super(HomeView, self).get_context_data(**kwargs)
-        ctx['submissions'] = Link.objects.all()
+
+        now = timezone.now()
+        submissions = Link.objects.all()
+        for submission in submissions:
+            num_votes = submission.upvotes.count()
+            num_comments = submission.comment_set.count()
+
+            date_diff = now - submission.submitted_on
+            number_of_days_since_submission = date_diff.days
+
+            submission.rank = num_votes + num_comments - number_of_days_since_submission
+
+        sorted_submissions = sorted(submissions, key=lambda x: x.rank, reverse=True)
+        ctx['submissions'] = sorted_submissions
 
         return ctx
 
