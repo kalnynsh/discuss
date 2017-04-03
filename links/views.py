@@ -131,3 +131,11 @@ class HomeView(TemplateView):
         ctx['submissions'] = Link.objects.all()
 
         return ctx
+
+
+class UpvoteSubmissionView(View):
+    def get(self, request, link_pk, **kwargs):
+        link = Link.objects.get(pk=link_pk)
+        link.upvotes.add(request.user)
+
+        return HttpResponseRedirect(reverse('home'))

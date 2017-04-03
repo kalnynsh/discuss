@@ -17,7 +17,7 @@ from django.conf.urls import url
 from django.contrib import admin
 from django.contrib.auth.views import login
 from django.contrib.auth.views import logout
-from django.views.generic import TemplateView
+# from django.views.generic import TemplateView
 
 from accounts.views import UserRegistrationView
 from links.views import HomeView
@@ -25,6 +25,7 @@ from links.views import NewSubmissionView
 from links.views import SubmissionDetailView
 from links.views import NewCommentView
 from links.views import NewCommentReplyView
+from links.views import UpvoteSubmissionView
 
 
 urlpatterns = [
@@ -40,5 +41,5 @@ urlpatterns = [
     url(r'^submission/(?P<pk>\d+)/$', SubmissionDetailView.as_view(), name='submission-detail'),
     url(r'^new-comment/$', NewCommentView.as_view(), name='new-comment'),
     url(r'^new-comment-reply/$', NewCommentReplyView.as_view(), name='new-comment-reply'),
-
+    url(r'^upvote/(?P<link_pk>\d+)/$', UpvoteSubmissionView.as_view(), name='upvote-submission'),
 ]
