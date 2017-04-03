@@ -128,6 +128,6 @@ class HomeView(TemplateView):
 
     def get_context_data(self, **kwargs):
         ctx = super(HomeView, self).get_context_data(**kwargs)
-        ctx['submission'] = Link.objects.all()
+        ctx['submissions'] = Link.objects.all()
 
         return ctx
