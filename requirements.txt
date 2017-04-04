@@ -38,5 +38,6 @@ captcha==0.2.2
 django-simple-captcha==0.5.3
 setuptools==34.3.3
 django-recaptcha==1.2.1
+django-bootstrap3==8.2.2
 
 
