@@ -18,25 +18,35 @@
     {% block bootstrap3_extra_head %}{% endblock %}
 </head>
 <body>
-<div class="container">
-    <nav>
-        <ul>
-            <li><a href="{% url 'home' %}">Home</a></li>
-            {% if request.user.is_authenticated %}
-                <li><a href="{% url 'new-submission' %}">Submit New link</a></li>
-                <li><a href="{% url 'logout' %}">Logout</a></li>
-            {% else %}
-                <li><a href="{% url 'login' %}">Login</a></li>
-                <li><a href="{% url 'user-registration' %}">Create New Account</a></li>
-            {% endif %}
-        </ul>
-    </nav>
-
-        {% block content %}
-        {% endblock content %}
+<nav class="navbar navbar-inverse navbar-fixed-top>
+        <div class="container-fluid">
+<div class="navbar-header">
+    <a class="navbar-brand" href="#">Discuss</a>
+</div>
+<div id="navbar" class="navbar-collapse collapse">
+    <ul class="nav navbar-nav navbar-left">
+        <li><a href="{% url 'home' %}">Home</a></li>
+        {% if request.user.is_authenticated %}
+        <li><a href="{% url 'new-submission' %}">Submit New link</a></li>
+        <li><a href="{% url 'logout' %}">Logout</a></li>
+        {% else %}
+        <li><a href="{% url 'login' %}">Login</a></li>
+        <li><a href="{% url 'user-registration' %}">Create New Account</a></li>
+        {% endif %}
+    </ul>
+</div>
+</div>
+</nav>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            {% block content %}
+            {% endblock content %}
+        </div>
+    </div>
 </div>
 {% if not 'javascript_in_head'|bootstrap_setting %}
-    {% bootstrap_javascript jquery=True %}
+{% bootstrap_javascript jquery=True %}
 {% endif %}
 {% block bootstrap3_extra_script %}{% endblock %}
 </body>
