@@ -14,7 +14,7 @@
         </a>
     </p>
 
-    <form action="" method="post">
+    <form action="" method="post" role="form">
         {% csrf_token %}
         {% bootstrap_form form %}
         {{ form.as_p }}
