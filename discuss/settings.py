@@ -148,7 +148,7 @@ STATIC_URL = '/static/'
 LOGIN_REDIRECT_URL = '/'
 LOGIN_URL = '/login/'
 
-#
+# https://github.com/praekelt/django-recaptcha
 # RECAPTCHA_PUBLIC_KEY = ''
 # RECAPTCHA_PRIVATE_KEY = ''
 # NOCAPTCHA = True
